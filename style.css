@@ -1,58 +1,119 @@
+/* Resetando margens e padding */
 * {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-    font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
 
+/* Configurações básicas do body */
 body {
-    background-color: #000;
-    color: #fff;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100vh;
-    overflow: hidden;
+  background-color: #000;
+  color: white;
+  font-family: Arial, sans-serif;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  overflow: hidden;
 }
 
-.container {
-    text-align: center;
+/* Foto no topo */
+.foto-topo {
+  width: 100%;
+  text-align: center;
+  margin-bottom: 20px;
 }
 
-h1 {
-    font-size: 2.5em;
-    margin-bottom: 20px;
+.imagem-topo {
+  width: 300px;
+  border-radius: 50%;
+  border: 5px solid #ff00ff;
 }
 
-.counter p {
-    font-size: 1.5em;
-    font-weight: bold;
+/* Estilo da parte de texto */
+.background {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
 }
 
-.floating-quotes {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    pointer-events: none;
-    overflow: hidden;
+.floating-text {
+  font-size: 2rem;
+  font-weight: bold;
+  color: #ff00ff;
+  text-shadow: 0 0 10px #ff00ff, 0 0 20px #ff00ff;
+  position: absolute;
+  animation: floatText 10s linear infinite alternate;
 }
 
-.floating-quotes span {
-    position: absolute;
-    color: rgba(255, 255, 255, 0.3);
-    font-size: 1.2em;
-    animation: float 20s linear infinite;
+/* Animações de movimento das frases */
+.floating-text:nth-child(1) {
+  animation-duration: 12s;
 }
 
-.floating-quotes span:nth-child(1) { top: 10%; left: 20%; }
-.floating-quotes span:nth-child(2) { top: 30%; left: 70%; }
-.floating-quotes span:nth-child(3) { top: 50%; left: 40%; }
-.floating-quotes span:nth-child(4) { top: 70%; left: 10%; }
-
-@keyframes float {
-    0% { transform: translateY(0); }
-    50% { transform: translateY(-10px); }
-    100% { transform: translateY(0); }
+.floating-text:nth-child(2) {
+  animation-duration: 15s;
 }
+
+.floating-text:nth-child(3) {
+  animation-duration: 18s;
+}
+
+@keyframes floatText {
+  0% {
+    transform: translateX(-100%) rotate(-10deg);
+  }
+  100% {
+    transform: translateX(100%) rotate(10deg);
+  }
+}
+
+/* Animações dos corações */
+.heart {
+  font-size: 2rem;
+  position: absolute;
+  animation: heartMove 3s ease-in-out infinite;
+}
+
+.heart:nth-child(1) {
+  left: 10%;
+}
+
+.heart:nth-child(2) {
+  left: 40%;
+}
+
+.heart:nth-child(3) {
+  left: 70%;
+}
+
+@keyframes heartMove {
+  0% {
+    transform: translateY(0);
+    opacity: 1;
+  }
+  50% {
+    transform: translateY(-20px);
+    opacity: 0.5;
+  }
+  100% {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+/* Contagem regressiva ou outro tipo de mensagem */
+.countdown {
+  font-size: 1.5rem;
+  font-weight: bold;
+  color: #fff;
+  position: absolute;
+  bottom: 10%;
+  text-align: center;
+}
+
