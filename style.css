@@ -11,17 +11,18 @@ body {
     text-align: center;
     overflow: hidden;
     position: relative;
+    font-family: Arial, sans-serif; /* Melhor legibilidade */
 }
 
 h1 {
-    font-size: 2.5em;
+    font-size: 5vw; /* Tamanho de fonte fluido baseado na largura da tela */
     color: #ff69b4;
     text-shadow: 0 0 8px #ff69b4;
     margin-top: 20px;
 }
 
 h2 {
-    font-size: 1.5em;
+    font-size: 3vw; /* Tamanho de fonte fluido baseado na largura da tela */
     color: pink;
     margin-bottom: 20px;
 }
@@ -35,6 +36,7 @@ h2 {
     cursor: pointer;
 }
 
+/* Botões sociais */
 .social-buttons {
     margin-top: 20px;
 }
@@ -69,7 +71,7 @@ h2 {
 }
 
 .counter, .phrase-container {
-    font-size: 1.2em;
+    font-size: 1.5em;
     margin: 10px 0;
 }
 
@@ -163,38 +165,46 @@ h2 {
 /* Responsividade para telas maiores */
 @media (min-width: 768px) {
     h1 {
-        font-size: 3em;
+        font-size: 3em; /* Ajustando para telas grandes */
     }
 
     h2 {
-        font-size: 2em;
+        font-size: 2em; /* Ajustando para telas grandes */
     }
 
-    .countdown, .rotating-phrases {
+    .counter, .phrase-container {
         font-size: 1.5em;
     }
 
     .photo-container img {
-        width: 60%;
+        width: 60%; /* Ajustando tamanho de imagem */
         max-width: 500px;
+    }
+
+    .album-photos {
+        grid-template-columns: repeat(4, 1fr); /* Mais imagens por linha */
     }
 }
 
 /* Ajuste para telas menores (celulares) */
 @media (max-width: 480px) {
     h1 {
-        font-size: 2em;
+        font-size: 6vw; /* Ajuste maior para legibilidade em dispositivos pequenos */
     }
 
     h2 {
-        font-size: 1.2em;
+        font-size: 4vw;
     }
 
-    .countdown, .rotating-phrases {
-        font-size: 1em;
+    .counter, .phrase-container {
+        font-size: 1.2em; /* Ajuste de texto */
     }
 
     .photo-container img {
-        width: 90%;
+        width: 90%; /* Ajuste de largura de imagem */
+    }
+
+    .album-photos {
+        grid-template-columns: repeat(2, 1fr); /* Menos imagens por linha em telas pequenas */
     }
 }
