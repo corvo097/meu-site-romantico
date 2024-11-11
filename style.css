@@ -1,44 +1,54 @@
-/* Fundo preto do site */
 body {
-  background-color: black;
-  color: #ff66b2; /* Rosa brilhante para as frases */
-  font-family: 'Arial', sans-serif;
-  margin: 0;
-  padding: 0;
-  overflow-x: hidden;
+    background-color: black;
+    color: white;
+    font-family: Arial, sans-serif;
+    text-align: center;
 }
 
-/* Animação de movimento das frases */
-@keyframes float {
-  0% { transform: translateX(-100%); }
-  50% { transform: translateX(0); }
-  100% { transform: translateX(100%); }
+.photo-container {
+    margin-top: 20px;
+    display: inline-block;
 }
 
-/* Estilo das frases flutuantes */
-#frase {
-  position: fixed;
-  top: 20px;
-  left: 50%;
-  transform: translateX(-50%);
-  font-size: 24px;
-  font-weight: bold;
-  animation: float 5s linear infinite;
+.photo {
+    width: 300px;
+    height: auto;
+    border: 10px solid rgba(255, 0, 255, 0.8); /* Borda rosa brilhante */
+    box-shadow: 0 0 20px rgba(255, 0, 255, 0.8);
+    animation: glowing 1.5s infinite alternate;
 }
 
-/* Borda brilhante rosa ao redor da imagem */
-#foto {
-  display: block;
-  width: 100%;
-  height: auto;
-  border: 10px solid #ff66b2; /* Cor rosa brilhante */
-  box-shadow: 0 0 15px 5px #ff66b2; /* Brilho ao redor */
-  margin-bottom: 20px;
+@keyframes glowing {
+    0% {
+        box-shadow: 0 0 5px rgba(255, 0, 255, 0.8);
+    }
+    100% {
+        box-shadow: 0 0 20px rgba(255, 0, 255, 1);
+    }
 }
 
-/* Ajustes para responsividade no celular */
-@media (max-width: 600px) {
-  #frase {
-    font-size: 18px;
-  }
+.phrase {
+    font-size: 2em;
+    color: #ff00ff;
+    font-weight: bold;
+    margin-top: 50px;
+    animation: movePhrase 5s infinite;
+}
+
+@keyframes movePhrase {
+    0% {
+        transform: translateX(-100%);
+    }
+    50% {
+        transform: translateX(100%);
+    }
+    100% {
+        transform: translateX(-100%);
+    }
+}
+
+.time-counter {
+    font-size: 1.5em;
+    color: #ff00ff;
+    margin-top: 50px;
 }
