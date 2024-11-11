@@ -14,19 +14,44 @@ function updateCounter() {
 
 setInterval(updateCounter, 1000);
 
-// Frases rotativas
+// Frases possessivas que rodam
 const phrases = [
-    "Você é minha",
-    "Minha para sempre",
-    "Nada vai nos separar",
-    "Meu coração é todo seu",
-    "eternamente minha"
+    "Você é minha para sempre, e ninguém vai tirar você de mim.",
+    "Eu sou seu, e você é minha, para sempre.",
+    "Nada nem ninguém vai nos separar, minha.",
+    "Você é minha, só minha.",
+    "Só você me pertence, e eu sou seu, para todo o sempre."
 ];
-let phraseIndex = 0;
 
-function updatePhrase() {
-    document.getElementById("floating-phrase").innerText = phrases[phraseIndex];
+let phraseIndex = 0;
+const phraseContainer = document.getElementById("floating-phrase");
+
+function rotatePhrases() {
+    phraseContainer.innerText = phrases[phraseIndex];
     phraseIndex = (phraseIndex + 1) % phrases.length;
 }
 
-setInterval(updatePhrase, 5000);
+setInterval(rotatePhrases, 5000); // Tempo alterado para 5000 milissegundos (5 segundos)
+
+// Mostrar e esconder álbum de fotos
+const albumContainer = document.getElementById("album-container");
+const backToStart = document.getElementById("back-to-start");
+const backToAlbum = document.getElementById("back-to-album");
+
+document.querySelector(".photo-container img").addEventListener("click", () => {
+    albumContainer.style.display = "flex";
+});
+
+backToStart.addEventListener("click", () => {
+    albumContainer.style.display = "none";
+});
+
+backToAlbum.addEventListener("click", () => {
+    albumContainer.style.display = "none";
+});
+
+// Animação do coração
+document.getElementById("heart-animation").style.display = "block";
+setTimeout(() => {
+    document.getElementById("heart-animation").style.display = "none";
+}, 2000);
