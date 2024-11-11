@@ -1,54 +1,77 @@
+/* Estilos para o fundo, título e subtítulo */
 body {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
     background-color: black;
-    color: white;
+    color: pink;
     font-family: Arial, sans-serif;
-    text-align: center;
+    overflow-x: hidden;
 }
 
+.title-container {
+    text-align: center;
+    margin-top: 20px;
+    margin-bottom: 10px;
+}
+
+/* Estilo do título principal */
+.main-title {
+    font-size: 2.5em;
+    color: pink;
+    position: relative;
+    animation: borderLight 3s infinite;
+}
+
+/* Efeito de luz correndo ao longo das bordas do título */
+@keyframes borderLight {
+    0% {
+        text-shadow: 0 0 5px pink, 0 0 10px pink, 0 0 15px pink, 0 0 20px pink;
+    }
+    50% {
+        text-shadow: 0 0 5px white, 0 0 10px white, 0 0 15px white, 0 0 20px white;
+    }
+    100% {
+        text-shadow: 0 0 5px pink, 0 0 10px pink, 0 0 15px pink, 0 0 20px pink;
+    }
+}
+
+/* Estilo do subtítulo */
+.subtitle {
+    font-size: 1.2em;
+    color: pink;
+    opacity: 0.8;
+}
+
+/* Foto com borda brilhante */
 .photo-container {
     margin-top: 20px;
-    display: inline-block;
 }
 
 .photo {
-    width: 300px;
-    height: auto;
-    border: 10px solid rgba(255, 0, 255, 0.8); /* Borda rosa brilhante */
-    box-shadow: 0 0 20px rgba(255, 0, 255, 0.8);
-    animation: glowing 1.5s infinite alternate;
+    border: 5px solid pink;
+    border-radius: 10px;
+    box-shadow: 0 0 10px pink, 0 0 20px pink, 0 0 30px pink;
 }
 
-@keyframes glowing {
-    0% {
-        box-shadow: 0 0 5px rgba(255, 0, 255, 0.8);
-    }
-    100% {
-        box-shadow: 0 0 20px rgba(255, 0, 255, 1);
-    }
-}
-
-.phrase {
-    font-size: 2em;
-    color: #ff00ff;
-    font-weight: bold;
-    margin-top: 50px;
-    animation: movePhrase 5s infinite;
-}
-
-@keyframes movePhrase {
-    0% {
-        transform: translateX(-100%);
-    }
-    50% {
-        transform: translateX(100%);
-    }
-    100% {
-        transform: translateX(-100%);
-    }
-}
-
-.time-counter {
+/* Contador de tempo */
+.counter {
+    margin-top: 20px;
     font-size: 1.5em;
-    color: #ff00ff;
-    margin-top: 50px;
+    color: pink;
 }
+
+/* Frases rotativas */
+.phrase-container {
+    margin-top: 30px;
+    font-size: 1.5em;
+    color: pink;
+    animation: bounce 2s infinite alternate;
+}
+
+/* Animação de movimento das frases */
+@keyframes bounce {
+    0% { transform: translateX(0); }
+    100% { transform: translateX(100px); }
+}
+
