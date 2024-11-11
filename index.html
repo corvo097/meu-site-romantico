@@ -20,24 +20,34 @@
     </div>
     
     <!-- Galeria de Imagens -->
-    <div class="photo-gallery">
-        <img src="https://i.im.ge/2024/11/11/k4pbSL.1000072675.jpeg" alt="Imagem 1">
-        <img src="https://i.im.ge/2024/11/11/k4pED0.1000072673.jpeg" alt="Imagem 2">
-        <img src="https://i.im.ge/2024/11/11/k4pxET.1000072674.jpeg" alt="Imagem 3">
-        <img src="https://i.im.ge/2024/11/11/k4pAeW.1000072677.jpeg" alt="Imagem 4">
-        <img src="https://i.im.ge/2024/11/11/k4p3vc.1000072679.jpeg" alt="Imagem 5">
-        <img src="https://i.im.ge/2024/11/11/k4pgVx.1000072678.jpeg" alt="Imagem 6">
-        <img src="https://i.im.ge/2024/11/11/k4pRra.1000072681.jpeg" alt="Imagem 7">
-        <img src="https://i.im.ge/2024/11/11/k4pW0J.1000072680.jpeg" alt="Imagem 8">
-        <img src="https://i.im.ge/2024/11/11/k4pZgy.1000072682.jpeg" alt="Imagem 9">
-        <img src="https://i.im.ge/2024/11/11/k4pVMS.1000072683.jpeg" alt="Imagem 10">
-        <img src="https://i.im.ge/2024/11/11/k4pfDz.1000072684.jpeg" alt="Imagem 11">
-        <img src="https://i.im.ge/2024/11/11/k4pB5h.1000072683.jpeg" alt="Imagem 16">
-        <img src="https://i.im.ge/2024/11/11/k4pG8M.1000072677.jpeg" alt="Imagem 17">
-        <img src="https://i.im.ge/2024/11/11/k4vMMY.1000072679.jpeg" alt="Imagem 18">
-        <img src="https://i.im.ge/2024/11/11/k4vQID.1000072678.jpeg" alt="Imagem 19">
-        <img src="https://i.im.ge/2024/11/11/k4vTE4.1000072673.jpeg" alt="Imagem 20">
-        <img src="https://i.im.ge/2024/11/11/k4voJC.1000072674.jpeg" alt="Imagem 21">
+    <div class="photo-gallery" id="album-container">
+        <div class="album-header">
+            <button id="back-to-start">Voltar ao Início</button>
+        </div>
+        <div class="album-images">
+            <img src="https://i.im.ge/2024/11/11/k4pbSL.1000072675.jpeg" alt="Imagem 1">
+            <img src="https://i.im.ge/2024/11/11/k4pED0.1000072673.jpeg" alt="Imagem 2">
+            <img src="https://i.im.ge/2024/11/11/k4pxET.1000072674.jpeg" alt="Imagem 3">
+            <img src="https://i.im.ge/2024/11/11/k4pAeW.1000072677.jpeg" alt="Imagem 4">
+            <img src="https://i.im.ge/2024/11/11/k4p3vc.1000072679.jpeg" alt="Imagem 5">
+            <img src="https://i.im.ge/2024/11/11/k4pgVx.1000072678.jpeg" alt="Imagem 6">
+            <img src="https://i.im.ge/2024/11/11/k4pRra.1000072681.jpeg" alt="Imagem 7">
+            <img src="https://i.im.ge/2024/11/11/k4pW0J.1000072680.jpeg" alt="Imagem 8">
+            <img src="https://i.im.ge/2024/11/11/k4pZgy.1000072682.jpeg" alt="Imagem 9">
+            <img src="https://i.im.ge/2024/11/11/k4pVMS.1000072683.jpeg" alt="Imagem 10">
+            <img src="https://i.im.ge/2024/11/11/k4pfDz.1000072684.jpeg" alt="Imagem 11">
+            <img src="https://i.im.ge/2024/11/11/k4pJfX.1000072684.jpeg" alt="Imagem 12">
+            <img src="https://i.im.ge/2024/11/11/k4pvN9.1000072682.jpeg" alt="Imagem 13">
+            <img src="https://i.im.ge/2024/11/11/k4p4r8.1000072680.jpeg" alt="Imagem 14">
+            <img src="https://i.im.ge/2024/11/11/k4ppSK.1000072681.jpeg" alt="Imagem 15">
+            <img src="https://i.im.ge/2024/11/11/k4pB5h.1000072683.jpeg" alt="Imagem 16">
+            <img src="https://i.im.ge/2024/11/11/k4pG8M.1000072677.jpeg" alt="Imagem 17">
+            <img src="https://i.im.ge/2024/11/11/k4vMMY.1000072679.jpeg" alt="Imagem 18">
+            <img src="https://i.im.ge/2024/11/11/k4vQID.1000072678.jpeg" alt="Imagem 19">
+            <img src="https://i.im.ge/2024/11/11/k4vTE4.1000072673.jpeg" alt="Imagem 20">
+            <img src="https://i.im.ge/2024/11/11/k4voJC.1000072674.jpeg" alt="Imagem 21">
+        </div>
+        <button id="back-to-album">Voltar ao Álbum</button>
     </div>
     
     <!-- Contador de tempo -->
@@ -46,32 +56,5 @@
     <!-- Frases rotativas -->
     <div class="phrase-container" id="floating-phrase"></div>
 
-    <script>
-        // Exemplo de contador de tempo
-        let seconds = 0;
-        const counterElement = document.getElementById("time-counter");
-
-        setInterval(() => {
-            seconds++;
-            counterElement.innerText = `Tempo juntos: ${seconds} segundos`;
-        }, 1000);
-
-        // Exemplo de frases rotativas
-        const phrases = [
-            "Eu sou o seu dono, e você é minha, minha única.",
-            "Nada vai nos separar, você é minha, sempre será.",
-            "Cada segundo ao seu lado é meu tesouro.",
-            "Eu sou seu, e você é minha, sem exceções.",
-            "Só você tem meu coração, agora e sempre."
-        ];
-
-        let phraseIndex = 0;
-        const phraseElement = document.getElementById("floating-phrase");
-
-        setInterval(() => {
-            phraseElement.innerText = phrases[phraseIndex];
-            phraseIndex = (phraseIndex + 1) % phrases.length;
-        }, 5000); // Troca a frase a cada 5 segundos
-    </script>
 </body>
 </html>
