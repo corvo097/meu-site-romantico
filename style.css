@@ -1,77 +1,78 @@
-/* Estilos para o fundo, título e subtítulo */
+/* Definindo estilo básico */
 body {
     display: flex;
     flex-direction: column;
     align-items: center;
+    justify-content: center;
+    height: 100vh;
+    margin: 0;
     background-color: black;
     color: pink;
-    font-family: Arial, sans-serif;
-    overflow-x: hidden;
-}
-
-.title-container {
     text-align: center;
-    margin-top: 20px;
-    margin-bottom: 10px;
+    overflow: hidden;
 }
 
-/* Estilo do título principal */
-.main-title {
+h1 {
     font-size: 2.5em;
-    color: pink;
-    position: relative;
-    animation: borderLight 3s infinite;
-}
-
-/* Efeito de luz correndo ao longo das bordas do título */
-@keyframes borderLight {
-    0% {
-        text-shadow: 0 0 5px pink, 0 0 10px pink, 0 0 15px pink, 0 0 20px pink;
-    }
-    50% {
-        text-shadow: 0 0 5px white, 0 0 10px white, 0 0 15px white, 0 0 20px white;
-    }
-    100% {
-        text-shadow: 0 0 5px pink, 0 0 10px pink, 0 0 15px pink, 0 0 20px pink;
-    }
-}
-
-/* Estilo do subtítulo */
-.subtitle {
-    font-size: 1.2em;
-    color: pink;
-    opacity: 0.8;
-}
-
-/* Foto com borda brilhante */
-.photo-container {
+    color: #ff69b4;
+    text-shadow: 0 0 8px #ff69b4;
     margin-top: 20px;
 }
 
-.photo {
-    border: 5px solid pink;
+h2 {
+    font-size: 1.5em;
+    color: pink;
+    margin-bottom: 20px;
+}
+
+.photo-container img {
+    width: 80%;
+    max-width: 300px;
     border-radius: 10px;
-    box-shadow: 0 0 10px pink, 0 0 20px pink, 0 0 30px pink;
+    box-shadow: 0 0 15px 5px rgba(255, 105, 180, 0.8);
+    margin: 20px 0;
 }
 
-/* Contador de tempo */
-.counter {
-    margin-top: 20px;
-    font-size: 1.5em;
-    color: pink;
+.countdown, .rotating-phrases {
+    font-size: 1.2em;
+    margin: 10px 0;
 }
 
-/* Frases rotativas */
-.phrase-container {
-    margin-top: 30px;
-    font-size: 1.5em;
-    color: pink;
-    animation: bounce 2s infinite alternate;
+/* Responsividade para telas maiores */
+@media (min-width: 768px) {
+    h1 {
+        font-size: 3em;
+    }
+
+    h2 {
+        font-size: 2em;
+    }
+
+    .countdown, .rotating-phrases {
+        font-size: 1.5em;
+    }
+
+    .photo-container img {
+        width: 60%;
+        max-width: 500px;
+    }
 }
 
-/* Animação de movimento das frases */
-@keyframes bounce {
-    0% { transform: translateX(0); }
-    100% { transform: translateX(100px); }
-}
+/* Ajuste para telas menores (celulares) */
+@media (max-width: 480px) {
+    h1 {
+        font-size: 2em;
+    }
 
+    h2 {
+        font-size: 1.2em;
+    }
+
+    .countdown, .rotating-phrases {
+        font-size: 1em;
+    }
+
+    .photo-container img {
+        width: 90%;
+    }
+}
