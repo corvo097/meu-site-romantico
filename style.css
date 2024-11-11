@@ -11,18 +11,18 @@ body {
     text-align: center;
     overflow: hidden;
     position: relative;
-    font-family: Arial, sans-serif; /* Melhor legibilidade */
+    font-family: Arial, sans-serif;
 }
 
 h1 {
-    font-size: 5vw; /* Tamanho de fonte fluido baseado na largura da tela */
+    font-size: 5vw;
     color: #ff69b4;
     text-shadow: 0 0 8px #ff69b4;
     margin-top: 20px;
 }
 
 h2 {
-    font-size: 3vw; /* Tamanho de fonte fluido baseado na largura da tela */
+    font-size: 3vw;
     color: pink;
     margin-bottom: 20px;
 }
@@ -36,107 +36,7 @@ h2 {
     cursor: pointer;
 }
 
-/* Botões sociais */
-.social-buttons {
-    margin-top: 20px;
-}
-
-.button {
-    padding: 10px 20px;
-    border: none;
-    border-radius: 25px;
-    text-decoration: none;
-    font-size: 1.2em;
-    color: white;
-    margin: 10px;
-    display: inline-block;
-    transition: transform 0.3s;
-}
-
-.instagram-button {
-    background-color: #ff69b4;
-    transition: 0.3s;
-}
-
-#joao-instagram {
-    background-color: #e60000;
-}
-
-#natalia-instagram {
-    background-color: #f3b7e5;
-}
-
-.button:hover {
-    transform: scale(1.1);
-}
-
-.counter, .phrase-container {
-    font-size: 1.5em;
-    margin: 10px 0;
-}
-
-/* Lightbox de Álbum */
-.album-container {
-    display: none;
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background-color: rgba(0, 0, 0, 0.8);
-    z-index: 1000;
-}
-
-.album-overlay {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    width: 100%;
-    height: 100%;
-}
-
-.album-inner {
-    background-color: white;
-    border-radius: 15px;
-    overflow: hidden;
-    width: 80%;
-    height: 80%;
-    display: flex;
-    flex-direction: column;
-}
-
-.album-header {
-    display: flex;
-    justify-content: space-between;
-    padding: 10px;
-    background-color: #ff69b4;
-}
-
-.back-button {
-    padding: 10px;
-    background-color: #ff69b4;
-    color: white;
-    border: none;
-    border-radius: 25px;
-    font-size: 1em;
-    cursor: pointer;
-}
-
-.album-photos {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    grid-gap: 10px;
-    padding: 10px;
-    overflow-y: scroll;
-}
-
-.album-photo {
-    width: 100%;
-    cursor: pointer;
-    border-radius: 10px;
-    box-shadow: 0 0 10px rgba(255, 105, 180, 0.6);
-}
-
+/* Animação do coração */
 .heart-animation {
     display: none;
     position: absolute;
@@ -162,49 +62,34 @@ h2 {
     }
 }
 
-/* Responsividade para telas maiores */
-@media (min-width: 768px) {
-    h1 {
-        font-size: 3em; /* Ajustando para telas grandes */
-    }
-
-    h2 {
-        font-size: 2em; /* Ajustando para telas grandes */
-    }
-
-    .counter, .phrase-container {
-        font-size: 1.5em;
-    }
-
-    .photo-container img {
-        width: 60%; /* Ajustando tamanho de imagem */
-        max-width: 500px;
-    }
-
-    .album-photos {
-        grid-template-columns: repeat(4, 1fr); /* Mais imagens por linha */
-    }
+/* Galeria */
+.album-container {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.8);
+    z-index: 1000;
 }
 
-/* Ajuste para telas menores (celulares) */
-@media (max-width: 480px) {
-    h1 {
-        font-size: 6vw; /* Ajuste maior para legibilidade em dispositivos pequenos */
-    }
+.album-images {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 15px;
+    margin: 20px;
+}
 
-    h2 {
-        font-size: 4vw;
-    }
+.album-images img {
+    width: 100%;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(255, 105, 180, 0.6);
+}
 
-    .counter, .phrase-container {
-        font-size: 1.2em; /* Ajuste de texto */
-    }
-
-    .photo-container img {
-        width: 90%; /* Ajuste de largura de imagem */
-    }
-
-    .album-photos {
-        grid-template-columns: repeat(2, 1fr); /* Menos imagens por linha em telas pequenas */
+/* Responsividade */
+@media (max-width: 768px) {
+    .album-images {
+        grid-template-columns: 1fr 1fr;
     }
 }
