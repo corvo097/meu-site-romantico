@@ -32,9 +32,6 @@
         <img src="https://i.im.ge/2024/11/11/k4pZgy.1000072682.jpeg" alt="Imagem 9">
         <img src="https://i.im.ge/2024/11/11/k4pVMS.1000072683.jpeg" alt="Imagem 10">
         <img src="https://i.im.ge/2024/11/11/k4pfDz.1000072684.jpeg" alt="Imagem 11">
-        <img src="https://i.im.ge/2024/11/11/k4pvN9.1000072682.jpeg" alt="Imagem 13">
-        <img src="https://i.im.ge/2024/11/11/k4p4r8.1000072680.jpeg" alt="Imagem 14">
-        <img src="https://i.im.ge/2024/11/11/k4ppSK.1000072681.jpeg" alt="Imagem 15">
         <img src="https://i.im.ge/2024/11/11/k4pB5h.1000072683.jpeg" alt="Imagem 16">
         <img src="https://i.im.ge/2024/11/11/k4pG8M.1000072677.jpeg" alt="Imagem 17">
         <img src="https://i.im.ge/2024/11/11/k4vMMY.1000072679.jpeg" alt="Imagem 18">
@@ -48,5 +45,33 @@
     
     <!-- Frases rotativas -->
     <div class="phrase-container" id="floating-phrase"></div>
+
+    <script>
+        // Exemplo de contador de tempo
+        let seconds = 0;
+        const counterElement = document.getElementById("time-counter");
+
+        setInterval(() => {
+            seconds++;
+            counterElement.innerText = `Tempo juntos: ${seconds} segundos`;
+        }, 1000);
+
+        // Exemplo de frases rotativas
+        const phrases = [
+            "Eu sou o seu dono, e você é minha, minha única.",
+            "Nada vai nos separar, você é minha, sempre será.",
+            "Cada segundo ao seu lado é meu tesouro.",
+            "Eu sou seu, e você é minha, sem exceções.",
+            "Só você tem meu coração, agora e sempre."
+        ];
+
+        let phraseIndex = 0;
+        const phraseElement = document.getElementById("floating-phrase");
+
+        setInterval(() => {
+            phraseElement.innerText = phrases[phraseIndex];
+            phraseIndex = (phraseIndex + 1) % phrases.length;
+        }, 5000); // Troca a frase a cada 5 segundos
+    </script>
 </body>
 </html>
