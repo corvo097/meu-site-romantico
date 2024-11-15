@@ -33,25 +33,37 @@ function rotatePhrases() {
 
 setInterval(rotatePhrases, 5000); // Tempo alterado para 5000 milissegundos (5 segundos)
 
-// Mostrar e esconder álbum de fotos
-const albumContainer = document.getElementById("album-container");
-const backToStart = document.getElementById("back-to-start");
-const backToAlbum = document.getElementById("back-to-album");
+// Função para deslizar a roleta de fotos
+let currentIndex = 0;
+const carouselImages = document.querySelector(".carousel-images");
+const images = document.querySelectorAll(".carousel-images img");
 
-document.querySelector(".photo-container img").addEventListener("click", () => {
-    albumContainer.style.display = "flex";
+function nextImage() {
+    currentIndex = (currentIndex + 1) % images.length;
+    carouselImages.style.transform = `translateX(-${currentIndex * 100}%)`;
+}
+
+function prevImage() {
+    currentIndex = (currentIndex - 1 + images.length) % images.length;
+    carouselImages.style.transform = `translateX(-${currentIndex * 100}%)`;
+}
+
+// Adicionar detecção de toque para deslizar as imagens
+let startX;
+
+carouselImages.addEventListener("touchstart", (e) => {
+    startX = e.touches[0].clientX;
 });
 
-backToStart.addEventListener("click", () => {
-    albumContainer.style.display = "none";
+carouselImages.addEventListener("touchmove", (e) => {
+    if (startX - e.touches[0].clientX > 50) {
+        nextImage();
+    } else if (e.touches[0].clientX - startX > 50) {
+        prevImage();
+    }
 });
 
-backToAlbum.addEventListener("click", () => {
-    albumContainer.style.display = "none";
+document.addEventListener("DOMContentLoaded", () => {
+    updateCounter();
+    setInterval(rotatePhrases, 5000);
 });
-
-// Animação do coração
-document.getElementById("heart-animation").style.display = "block";
-setTimeout(() => {
-    document.getElementById("heart-animation").style.display = "none";
-}, 2000);

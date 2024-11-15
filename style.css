@@ -62,34 +62,34 @@ h2 {
     }
 }
 
-/* Galeria */
-.album-container {
-    display: none;
-    position: fixed;
-    top: 0;
-    left: 0;
+/* Roleta de Fotos */
+.photo-carousel {
+    display: flex;
+    justify-content: center;
+    align-items: center;
     width: 100%;
-    height: 100%;
-    background-color: rgba(0, 0, 0, 0.8);
-    z-index: 1000;
+    height: 50%;
+    overflow: hidden;
+    position: relative;
 }
 
-.album-images {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 15px;
-    margin: 20px;
+.carousel-images {
+    display: flex;
+    transition: transform 0.5s ease-in-out;
 }
 
-.album-images img {
-    width: 100%;
-    border-radius: 8px;
-    box-shadow: 0 0 10px rgba(255, 105, 180, 0.6);
+.carousel-images img {
+    width: 80%;
+    max-width: 400px;
+    border-radius: 10px;
+    margin: 0 10px;
+    box-shadow: 0 0 15px 5px rgba(255, 105, 180, 0.8);
+    object-fit: cover;
 }
 
 /* Responsividade */
 @media (max-width: 768px) {
-    .album-images {
-        grid-template-columns: 1fr 1fr;
+    .carousel-images img {
+        width: 100%;
     }
 }
