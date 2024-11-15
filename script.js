@@ -1,69 +1,114 @@
-// Contador de tempo desde 1º de novembro de 2023
-function updateCounter() {
-    const startDate = new Date("2023-11-01T00:00:00");
-    const now = new Date();
-    const diff = now - startDate;
-
-    const days = Math.floor(diff / (1000 * 60 * 60 * 24));
-    const hours = Math.floor((diff / (1000 * 60 * 60)) % 24);
-    const minutes = Math.floor((diff / (1000 * 60)) % 60);
-    const seconds = Math.floor((diff / 1000) % 60);
-
-    document.getElementById("time-counter").innerText = `${days} dias, ${hours} horas, ${minutes} minutos e ${seconds} segundos juntos`;
+/* Definindo estilo básico */
+body {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    margin: 0;
+    background-color: black;
+    color: pink;
+    text-align: center;
+    overflow: hidden;
+    position: relative;
+    font-family: Arial, sans-serif;
 }
 
-setInterval(updateCounter, 1000);
-
-// Frases possessivas que rodam
-const phrases = [
-    "Você é minha para sempre, e ninguém vai tirar você de mim.",
-    "Eu sou seu, e você é minha, para sempre.",
-    "Nada nem ninguém vai nos separar, minha.",
-    "Você é minha, só minha.",
-    "Só você me pertence, e eu sou seu, para todo o sempre."
-];
-
-let phraseIndex = 0;
-const phraseContainer = document.getElementById("floating-phrase");
-
-function rotatePhrases() {
-    phraseContainer.innerText = phrases[phraseIndex];
-    phraseIndex = (phraseIndex + 1) % phrases.length;
+h1 {
+    font-size: 5vw;
+    color: #ff69b4;
+    text-shadow: 0 0 8px #ff69b4;
+    margin-top: 20px;
 }
 
-setInterval(rotatePhrases, 5000); // Tempo alterado para 5000 milissegundos (5 segundos)
-
-// Função para deslizar a roleta de fotos
-let currentIndex = 0;
-const carouselImages = document.querySelector(".carousel-images");
-const images = document.querySelectorAll(".carousel-images img");
-
-function nextImage() {
-    currentIndex = (currentIndex + 1) % images.length;
-    carouselImages.style.transform = `translateX(-${currentIndex * 100}%)`;
+h2 {
+    font-size: 3vw;
+    color: pink;
+    margin-bottom: 20px;
 }
 
-function prevImage() {
-    currentIndex = (currentIndex - 1 + images.length) % images.length;
-    carouselImages.style.transform = `translateX(-${currentIndex * 100}%)`;
+.photo-container img {
+    width: 80%;
+    max-width: 300px;
+    border-radius: 10px;
+    box-shadow: 0 0 15px 5px rgba(255, 105, 180, 0.8);
+    margin: 20px 0;
+    cursor: pointer;
 }
 
-// Adicionar detecção de toque para deslizar as imagens
-let startX;
+/* Estilo da roleta de imagens */
+.photo-carousel {
+    display: none;
+    width: 80%;
+    max-width: 900px;
+    margin-top: 20px;
+    position: relative;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
 
-carouselImages.addEventListener("touchstart", (e) => {
-    startX = e.touches[0].clientX;
-});
+.carousel-images {
+    display: flex;
+    transition: transform 0.3s ease;
+}
 
-carouselImages.addEventListener("touchmove", (e) => {
-    if (startX - e.touches[0].clientX > 50) {
-        nextImage();
-    } else if (e.touches[0].clientX - startX > 50) {
-        prevImage();
+.carousel-image {
+    width: 100%;
+    max-width: 300px;
+    border-radius: 10px;
+    margin: 0 5px;
+    box-shadow: 0 0 15px 5px rgba(255, 105, 180, 0.8);
+}
+
+.carousel-nav {
+    position: absolute;
+    top: 50%;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+}
+
+.carousel-button {
+    background: rgba(255, 105, 180, 0.8);
+    border: none;
+    padding: 10px;
+    cursor: pointer;
+    font-size: 18px;
+    color: white;
+    font-weight: bold;
+}
+
+/* Animação do coração */
+.heart-animation {
+    display: none;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.heart {
+    width: 100px;
+    height: 100px;
+    background-color: pink;
+    clip-path: polygon(50% 0%, 100% 35%, 80% 100%, 20% 100%, 0% 35%);
+    animation: heartAnimation 2s ease-in-out forwards;
+}
+
+@keyframes heartAnimation {
+    0% {
+        transform: scale(0);
     }
-});
+    100% {
+        transform: scale(3);
+    }
+}
 
-document.addEventListener("DOMContentLoaded", () => {
-    updateCounter();
-    setInterval(rotatePhrases, 5000);
-});
+/* Responsividade */
+@media (max-width: 768px) {
+    .carousel-image {
+        max-width: 250px;
+    }
+}
