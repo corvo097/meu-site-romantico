@@ -33,19 +33,17 @@ function rotatePhrases() {
 
 setInterval(rotatePhrases, 5000); // Tempo alterado para 5000 milissegundos (5 segundos)
 
-// Funcionalidade da roleta de imagens
+// Mostrar e esconder a roleta
 const mainPhoto = document.getElementById("main-photo");
 const carouselContainer = document.getElementById("carousel-container");
+const closeCarousel = document.getElementById("close-carousel");
 
 mainPhoto.addEventListener("click", () => {
-    carouselContainer.style.display = "block"; // Mostrar a roleta de imagens
+    carouselContainer.style.display = "flex"; // Mostrar a roleta
 });
 
-// Fechar a roleta de imagens
-carouselContainer.addEventListener("click", (e) => {
-    if (e.target === carouselContainer) {
-        carouselContainer.style.display = "none"; // Fechar ao clicar fora da roleta
-    }
+closeCarousel.addEventListener("click", () => {
+    carouselContainer.style.display = "none"; // Fechar a roleta
 });
 
 // Animação do coração

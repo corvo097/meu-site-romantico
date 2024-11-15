@@ -1,4 +1,4 @@
-/* Estilos básicos */
+/* Estilos Gerais */
 body {
     display: flex;
     flex-direction: column;
@@ -27,53 +27,56 @@ h2 {
     margin-bottom: 20px;
 }
 
-.photo-container {
-    position: relative;
-    width: 80%;
-    max-width: 300px;
-}
-
+/* Estilos para a Foto Principal */
 .photo-container img {
     width: 100%;
+    max-width: 500px; /* Tamanho da imagem principal */
     border-radius: 10px;
     box-shadow: 0 0 15px 5px rgba(255, 105, 180, 0.8);
+    margin: 20px 0;
     cursor: pointer;
-    transition: transform 0.3s ease;
 }
 
-.photo-container .photo {
-    display: flex;
+/* Galeria de Imagens (Roleta) */
+.carousel-container {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.8);
+    z-index: 1000;
     justify-content: center;
     align-items: center;
 }
 
-/* Roleta de Imagens (Galeria) */
-#carousel-container {
-    display: none; /* Inicialmente oculta */
-    position: fixed;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    background-color: rgba(0, 0, 0, 0.8);
-    width: 90%;
-    max-width: 600px;
-    border-radius: 10px;
-    padding: 10px;
-    overflow: hidden;
-}
-
 .carousel-images {
     display: flex;
-    gap: 10px;
     overflow-x: scroll;
+    gap: 15px;
+    padding: 20px;
 }
 
 .carousel-images img {
     width: 100%;
-    max-width: 150px;
+    max-width: 500px; /* Tamanho das imagens da roleta */
+    height: auto;
+    object-fit: cover;
     border-radius: 10px;
-    transition: transform 0.3s ease;
+}
+
+/* Botão para fechar a roleta */
+#close-carousel {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    background-color: pink;
+    border: none;
+    padding: 10px 20px;
     cursor: pointer;
+    color: black;
+    font-size: 16px;
 }
 
 /* Animação do coração */
@@ -105,6 +108,7 @@ h2 {
 /* Responsividade */
 @media (max-width: 768px) {
     .carousel-images {
-        grid-template-columns: 1fr 1fr;
+        flex-direction: column;
+        align-items: center;
     }
 }
