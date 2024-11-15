@@ -1,4 +1,4 @@
-k// Contador de tempo desde 1º de novembro de 2023
+// Contador de tempo desde 1º de novembro de 2023
 function updateCounter() {
     const startDate = new Date("2023-11-01T00:00:00");
     const now = new Date();
@@ -33,26 +33,23 @@ function rotatePhrases() {
 
 setInterval(rotatePhrases, 5000); // Tempo alterado para 5000 milissegundos (5 segundos)
 
-// Mostrar e esconder roleta de fotos
-const mainPhotoContainer = document.getElementById("main-photo-container");
-const photoCarousel = document.getElementById("photo-carousel");
+// Funcionalidade da roleta de imagens
+const mainPhoto = document.getElementById("main-photo");
+const carouselContainer = document.getElementById("carousel-container");
 
-mainPhotoContainer.addEventListener("click", () => {
-    photoCarousel.style.display = "block";  // Mostrar a roleta de imagens
+mainPhoto.addEventListener("click", () => {
+    carouselContainer.style.display = "block"; // Mostrar a roleta de imagens
 });
 
-// Navegação na roleta
-let currentIndex = 0;
-const carouselImages = document.getElementById("carousel-images");
-const totalImages = document.querySelectorAll(".carousel-image").length;
-
-document.getElementById("next").addEventListener("click", () => {
-    currentIndex = (currentIndex + 1) % totalImages;
-    carouselImages.style.transform = `translateX(-${currentIndex * 310}px)`;
+// Fechar a roleta de imagens
+carouselContainer.addEventListener("click", (e) => {
+    if (e.target === carouselContainer) {
+        carouselContainer.style.display = "none"; // Fechar ao clicar fora da roleta
+    }
 });
 
-document.getElementById("prev").addEventListener("click", () => {
-    currentIndex = (currentIndex - 1 + totalImages) % totalImages;
-    carouselImages.style.transform = `translateX(-${currentIndex * 310}px)`;
-});
-
+// Animação do coração
+document.getElementById("heart-animation").style.display = "block";
+setTimeout(() => {
+    document.getElementById("heart-animation").style.display = "none";
+}, 2000);

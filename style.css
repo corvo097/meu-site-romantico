@@ -1,4 +1,4 @@
-/* Definindo estilo básico */
+/* Estilos básicos */
 body {
     display: flex;
     flex-direction: column;
@@ -27,60 +27,53 @@ h2 {
     margin-bottom: 20px;
 }
 
-.photo-container img {
+.photo-container {
+    position: relative;
     width: 80%;
     max-width: 300px;
-    border-radius: 10px;
-    box-shadow: 0 0 15px 5px rgba(255, 105, 180, 0.8);
-    margin: 20px 0;
-    cursor: pointer;
 }
 
-/* Estilo da roleta de imagens */
-.photo-carousel {
-    display: none;
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 80%;
-    max-width: 300px;
-    margin: 0;
-    z-index: 1000;
-    background-color: rgba(0, 0, 0, 0.7);
+.photo-container img {
+    width: 100%;
     border-radius: 10px;
     box-shadow: 0 0 15px 5px rgba(255, 105, 180, 0.8);
+    cursor: pointer;
+    transition: transform 0.3s ease;
+}
+
+.photo-container .photo {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* Roleta de Imagens (Galeria) */
+#carousel-container {
+    display: none; /* Inicialmente oculta */
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: rgba(0, 0, 0, 0.8);
+    width: 90%;
+    max-width: 600px;
+    border-radius: 10px;
+    padding: 10px;
+    overflow: hidden;
 }
 
 .carousel-images {
     display: flex;
-    transition: transform 0.3s ease;
+    gap: 10px;
+    overflow-x: scroll;
 }
 
-.carousel-image {
+.carousel-images img {
     width: 100%;
-    max-width: 300px;
+    max-width: 150px;
     border-radius: 10px;
-    margin: 0 5px;
-    box-shadow: 0 0 15px 5px rgba(255, 105, 180, 0.8);
-}
-
-.carousel-nav {
-    position: absolute;
-    top: 50%;
-    width: 100%;
-    display: flex;
-    justify-content: space-between;
-    z-index: 2000;
-}
-
-.carousel-button {
-    background: rgba(255, 105, 180, 0.8);
-    border: none;
-    padding: 10px;
+    transition: transform 0.3s ease;
     cursor: pointer;
-    font-size: 18px;
-    color: white;
-    font-weight: bold;
 }
 
 /* Animação do coração */
@@ -111,7 +104,7 @@ h2 {
 
 /* Responsividade */
 @media (max-width: 768px) {
-    .carousel-image {
-        max-width: 250px;
+    .carousel-images {
+        grid-template-columns: 1fr 1fr;
     }
 }
