@@ -14,7 +14,7 @@ function updateCounter() {
 
 setInterval(updateCounter, 1000);
 
-// Frases possessivas que rodam
+// Frases rotativas
 const phrases = [
     "Você é minha para sempre, e ninguém vai tirar você de mim.",
     "Eu sou seu, e você é minha, para sempre.",
@@ -31,23 +31,17 @@ function rotatePhrases() {
     phraseIndex = (phraseIndex + 1) % phrases.length;
 }
 
-setInterval(rotatePhrases, 5000); // Tempo alterado para 5000 milissegundos (5 segundos)
+setInterval(rotatePhrases, 5000); // Troca a cada 5 segundos
 
 // Mostrar e esconder a roleta
-const mainPhoto = document.getElementById("main-photo");
+const mainPhoto = document.querySelector(".photo-container img");
 const carouselContainer = document.getElementById("carousel-container");
 const closeCarousel = document.getElementById("close-carousel");
 
 mainPhoto.addEventListener("click", () => {
-    carouselContainer.style.display = "flex"; // Mostrar a roleta
+    carouselContainer.style.display = "flex"; // Mostra a roleta
 });
 
 closeCarousel.addEventListener("click", () => {
-    carouselContainer.style.display = "none"; // Fechar a roleta
+    carouselContainer.style.display = "none"; // Esconde a roleta
 });
-
-// Animação do coração
-document.getElementById("heart-animation").style.display = "block";
-setTimeout(() => {
-    document.getElementById("heart-animation").style.display = "none";
-}, 2000);
