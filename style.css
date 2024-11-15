@@ -56,11 +56,12 @@ h2 {
     overflow-x: scroll;
     gap: 15px;
     padding: 20px;
+    justify-content: center;
 }
 
 .carousel-images img {
     width: 100%;
-    max-width: 500px; /* Tamanho das imagens da roleta */
+    max-width: 400px; /* Ajuste no tamanho máximo das imagens da roleta */
     height: auto;
     object-fit: cover;
     border-radius: 10px;
