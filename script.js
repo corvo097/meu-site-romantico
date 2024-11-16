@@ -45,3 +45,29 @@ mainPhoto.addEventListener("click", () => {
 closeCarousel.addEventListener("click", () => {
     carouselContainer.style.display = "none"; // Esconde a roleta
 });
+
+// Função de rotação da roleta com o toque
+let touchStartX = 0;
+const carouselImages = document.getElementById("carousel-images");
+
+carouselImages.addEventListener("touchstart", (e) => {
+    touchStartX = e.touches[0].clientX;
+});
+
+carouselImages.addEventListener("touchmove", (e) => {
+    const touchEndX = e.touches[0].clientX;
+    const deltaX = touchStartX - touchEndX;
+    carouselImages.style.transition = "transform 0.3s ease"; // Suavizar a rotação
+    carouselImages.style.transform = `translateX(${deltaX}px)`;
+});
+
+carouselImages.addEventListener("touchend", (e) => {
+    const touchEndX = e.changedTouches[0].clientX;
+    const deltaX = touchStartX - touchEndX;
+    if (Math.abs(deltaX) > 50) {
+        const direction = deltaX > 0 ? "left" : "right";
+        // Você pode adicionar a lógica de rotação com base na direção do deslizar
+    }
+    carouselImages.style.transition = "transform 0.3s ease";
+    carouselImages.style.transform = `translateX(0px)`;
+});
