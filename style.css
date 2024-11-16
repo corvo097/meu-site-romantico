@@ -3,8 +3,8 @@ body {
     font-family: 'Arial', sans-serif;
     margin: 0;
     padding: 0;
-    background-color: #f9f1f7; /* Fundo suave e romântico */
-    color: #4f4f4f;
+    background-color: #000000; /* Fundo preto */
+    color: #ff00ff; /* Rosa neon */
     overflow-x: hidden;
 }
 
@@ -19,8 +19,8 @@ body {
 .main-title {
     font-size: 3rem;
     font-weight: bold;
-    color: #ff6f61; /* Cor romântica */
-    text-shadow: 2px 2px 10px rgba(255, 99, 71, 0.7);
+    color: #ff00ff; /* Rosa neon */
+    text-shadow: 0 0 10px #ff00ff, 0 0 20px #ff00ff, 0 0 30px #ff00ff;
     transition: transform 0.5s ease;
 }
 
@@ -31,9 +31,10 @@ body {
 /* Subtítulo ajustado */
 .subtitle {
     font-size: 1.5rem;
-    color: #7a7a7a;
+    color: #ff00ff; /* Rosa neon */
     margin-top: 10px;
     font-style: italic;
+    text-shadow: 0 0 5px #ff00ff;
     transition: opacity 0.3s ease;
 }
 
@@ -51,14 +52,15 @@ body {
 .photo {
     width: 100%;
     max-width: 600px;
-    border: 5px solid #ff6347;
+    border: 5px solid #ff00ff; /* Rosa neon */
     border-radius: 10px;
-    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
-    transition: transform 0.5s ease;
+    box-shadow: 0 0 20px #ff00ff, 0 0 30px #ff00ff, 0 0 40px #ff00ff;
+    transition: transform 0.5s ease, box-shadow 0.5s ease;
 }
 
 .photo:hover {
     transform: scale(1.05);
+    box-shadow: 0 0 30px #ff00ff, 0 0 50px #ff00ff, 0 0 70px #ff00ff;
 }
 
 /* Efeito da roleta */
@@ -69,7 +71,7 @@ body {
     left: 0;
     width: 100%;
     height: 100%;
-    background-color: rgba(0, 0, 0, 0.9);
+    background-color: rgba(0, 0, 0, 0.95); /* Fundo quase preto */
     justify-content: center;
     align-items: center;
     z-index: 1000;
@@ -79,17 +81,20 @@ body {
     position: absolute;
     top: 20px;
     right: 20px;
-    color: #fff;
-    background-color: #ff6f61;
-    border: none;
+    color: #ff00ff; /* Rosa neon */
+    background-color: transparent;
+    border: 2px solid #ff00ff; /* Borda neon */
     padding: 10px;
     font-size: 1.2rem;
     cursor: pointer;
     border-radius: 5px;
+    text-shadow: 0 0 5px #ff00ff;
+    transition: background-color 0.3s ease, color 0.3s ease;
 }
 
 #close-carousel:hover {
-    background-color: #ff4c39;
+    background-color: #ff00ff; /* Rosa neon */
+    color: #000000; /* Preto */
 }
 
 /* Estilo para as imagens da roleta */
@@ -107,12 +112,14 @@ body {
     height: auto;
     margin: 10px;
     border-radius: 10px;
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.5);
-    transition: transform 0.3s ease;
+    border: 3px solid #ff00ff; /* Borda rosa neon */
+    box-shadow: 0 0 10px #ff00ff, 0 0 20px #ff00ff;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
 .carousel-images img:hover {
     transform: scale(1.1);
+    box-shadow: 0 0 20px #ff00ff, 0 0 40px #ff00ff;
 }
 
 /* Estilo para o contador de tempo */
@@ -120,7 +127,38 @@ body {
     text-align: center;
     margin-top: 50px;
     font-size: 1.8rem;
-    color: #ff6347;
+    color: #ff00ff; /* Rosa neon */
+    text-shadow: 0 0 10px #ff00ff;
+}
+
+/* Botões do Instagram */
+.button-container {
+    display: flex;
+    justify-content: center;
+    gap: 20px; /* Espaçamento entre os botões */
+    margin-top: 30px;
+}
+
+/* Estilo dos botões */
+.instagram-button {
+    text-decoration: none; /* Remove sublinhado */
+    font-size: 1.2rem;
+    font-weight: bold;
+    color: #000000; /* Texto preto */
+    background-color: #ff00ff; /* Fundo rosa neon */
+    border: 2px solid #ff00ff; /* Borda rosa neon */
+    padding: 10px 20px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px #ff00ff, 0 0 20px #ff00ff, 0 0 30px #ff00ff;
+    transition: transform 0.3s ease, box-shadow 0.3s ease, background-color 0.3s ease;
+}
+
+/* Efeito ao passar o mouse */
+.instagram-button:hover {
+    transform: scale(1.1); /* Aumenta o tamanho */
+    background-color: #000000; /* Muda o fundo para preto */
+    color: #ff00ff; /* Texto rosa neon */
+    box-shadow: 0 0 20px #ff00ff, 0 0 40px #ff00ff, 0 0 60px #ff00ff;
 }
 
 /* Animação de fade-in */
