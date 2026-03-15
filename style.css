@@ -1,171 +1,182 @@
-body{
-
-margin:0;
-font-family:'Poppins',sans-serif;
-background:black;
-color:white;
-text-align:center;
-overflow-x:hidden;
-
+/* 1. Configurações Gerais e Reset */
+body {
+    margin: 0;
+    padding: 0;
+    font-family: 'Poppins', sans-serif;
+    background: black;
+    color: white;
+    text-align: center;
+    overflow-x: hidden;
+    min-height: 100vh;
 }
 
-canvas{
-
-position:fixed;
-top:0;
-left:0;
-z-index:-1;
-
+/* 2. Fundos (Canvas) */
+canvas {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -1;
+    pointer-events: none; /* Importante para não bloquear cliques */
 }
 
-#stars{
-
-z-index:-2;
-
+#stars {
+    z-index: -2;
 }
 
-h1{
-
-font-family:'Dancing Script',cursive;
-font-size:3rem;
-color:#ff4da6;
-text-shadow:0 0 20px #ff4da6;
-
+/* 3. Tipografia e Títulos */
+h1 {
+    font-family: 'Dancing Script', cursive;
+    font-size: clamp(2.5rem, 10vw, 4rem);
+    color: #ff4da6;
+    text-shadow: 0 0 20px #ff4da6;
+    margin: 20px 0;
 }
 
-.photo-section img{
-
-width:90%;
-max-width:600px;
-
-border-radius:15px;
-
-box-shadow:0 0 30px #ff4da6;
-
-transition:transform 0.2s;
-
-transform-style:preserve-3d;
-
+header p {
+    font-size: 1.1rem;
+    padding: 0 20px;
 }
 
-.buttons{
-
-margin-top:30px;
-display:flex;
-justify-content:center;
-gap:20px;
-
+/* 4. Seção da Foto Principal */
+.photo-section {
+    margin: 20px auto;
+    perspective: 1000px; /* Dá profundidade ao efeito do mouse */
 }
 
-.buttons a{
-
-background:#ff4da6;
-color:white;
-text-decoration:none;
-padding:12px 20px;
-border-radius:10px;
-
+.photo-section img {
+    width: 85%;
+    max-width: 450px;
+    border-radius: 15px;
+    box-shadow: 0 0 30px #ff4da6;
+    transition: transform 0.1s ease-out;
 }
 
-.counter{
-
-margin-top:40px;
-font-size:1.6rem;
-color:#ff4da6;
-
+/* 5. Botões e Interação */
+.buttons {
+    margin-top: 30px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 15px;
+    padding: 0 10px;
 }
 
-.phrases{
-
-margin-top:30px;
-font-size:1.4rem;
-transition:opacity 0.5s;
-
+.buttons a, .btn-gallery {
+    background: #ff4da6;
+    color: white;
+    text-decoration: none;
+    padding: 12px 20px;
+    border-radius: 25px;
+    font-weight: 500;
+    border: none;
+    cursor: pointer;
+    transition: 0.3s;
 }
 
-.timeline{
-
-margin-top:80px;
-
+.buttons a:hover, .btn-gallery:hover {
+    transform: scale(1.1);
+    box-shadow: 0 0 15px #ff4da6;
 }
 
-.timeline-item{
-
-margin:30px auto;
-max-width:400px;
-padding:20px;
-border-left:3px solid #ff4da6;
-text-align:left;
-
+/* 6. Contador e Frases */
+.counter {
+    margin-top: 40px;
+    font-size: clamp(1.2rem, 5vw, 1.8rem);
+    color: #ff4da6;
+    font-weight: bold;
 }
 
-.gallery{
-
-display:none;
-
-position:fixed;
-top:0;
-left:0;
-
-width:100%;
-height:100%;
-
-background:black;
-
-justify-content:center;
-align-items:center;
-flex-direction:column;
-
+.phrases {
+    margin-top: 20px;
+    height: 40px; /* Evita que o site "pule" quando a frase muda */
+    font-size: 1.2rem;
+    font-style: italic;
+    transition: opacity 0.5s;
 }
 
-.carousel{
-
-position:relative;
-width:500px;
-height:500px;
-transform-style:preserve-3d;
-animation:rotateCarousel 40s linear infinite;
-
+/* 7. Linha do Tempo (Timeline) */
+.timeline {
+    margin-top: 60px;
+    padding-bottom: 50px;
 }
 
-.carousel img{
-
-position:absolute;
-width:280px;
-height:auto;
-left:110px;
-top:120px;
-
-border-radius:12px;
-box-shadow:0 0 20px #ff4da6;
-
+.timeline-item {
+    margin: 20px auto;
+    max-width: 85%;
+    padding: 15px;
+    border-left: 3px solid #ff4da6;
+    text-align: left;
+    background: rgba(255, 77, 166, 0.05);
 }
 
-@keyframes rotateCarousel{
-
-from{transform:rotateY(0deg)}
-to{transform:rotateY(360deg)}
-
+/* 8. Galeria 3D (Onde estava o maior erro) */
+.gallery {
+    display: none; /* JS muda para flex */
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.95);
+    z-index: 2000;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
 }
 
-#closeGallery{
-
-position:absolute;
-top:20px;
-right:20px;
-
-background:none;
-border:2px solid #ff4da6;
-color:#ff4da6;
-
-padding:8px 15px;
-cursor:pointer;
-
+.carousel {
+    position: relative;
+    width: 200px;
+    height: 250px;
+    transform-style: preserve-3d;
+    animation: rotateCarousel 25s linear infinite;
 }
 
-footer{
+.carousel img {
+    position: absolute;
+    width: 180px;
+    height: 240px;
+    object-fit: cover; /* Mantém a proporção das fotos */
+    border-radius: 10px;
+    box-shadow: 0 0 15px #ff4da6;
+    /* O transform agora é gerenciado pelo JS */
+}
 
-margin-top:80px;
-color:#aaa;
+@keyframes rotateCarousel {
+    from { transform: perspective(1000px) rotateY(0deg); }
+    to { transform: perspective(1000px) rotateY(360deg); }
+}
 
+#closeGallery {
+    position: absolute;
+    top: 40px;
+    right: 30px;
+    background: #ff4da6;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-weight: bold;
+    z-index: 2100;
+}
+
+/* 9. Rodapé */
+footer {
+    margin-top: 50px;
+    padding: 20px;
+    color: #888;
+}
+
+/* 10. Ajustes para Telas Pequenas (Mobile) */
+@media (max-width: 600px) {
+    .carousel {
+        width: 150px;
+    }
+    .carousel img {
+        width: 140px;
+        height: 190px;
+    }
 }
