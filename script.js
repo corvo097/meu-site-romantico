@@ -1,6 +1,6 @@
 const startDate = new Date("2023-11-01T00:00:00");
 
-// 1. Contador de Tempo corrigido
+// 1. Contador de Tempo
 function updateCounter() {
     const now = new Date();
     const diff = now - startDate;
@@ -42,46 +42,89 @@ function rotatePhrase() {
 setInterval(rotatePhrase, 5000);
 rotatePhrase();
 
-// 3. Controle da Galeria (Abrir e Fechar)
+// 3. Controle da Galeria e Sensores
 const gallery = document.getElementById("gallery");
-const openBtn = document.getElementById("openGallery"); // Botão novo do HTML
+const openBtn = document.getElementById("openGallery");
 const closeBtn = document.getElementById("closeGallery");
 const mainPhoto = document.getElementById("mainPhoto");
 
-// Abre pelo botão ou clicando na foto principal
-if (openBtn) openBtn.onclick = () => gallery.style.display = "flex";
-if (mainPhoto) mainPhoto.onclick = () => gallery.style.display = "flex";
+// Função para ativar sensores no iPhone (iOS)
+async function requestSensorPermission() {
+    if (typeof DeviceOrientationEvent !== 'undefined' && typeof DeviceOrientationEvent.requestPermission === 'function') {
+        try {
+            await DeviceOrientationEvent.requestPermission();
+        } catch (e) {
+            console.error("Permissão de sensor negada");
+        }
+    }
+}
+
+if (openBtn) {
+    openBtn.onclick = () => {
+        gallery.style.display = "flex";
+        requestSensorPermission(); // Pede permissão ao interagir
+    };
+}
+
+if (mainPhoto) {
+    mainPhoto.onclick = () => {
+        gallery.style.display = "flex";
+        requestSensorPermission();
+    };
+}
+
 if (closeBtn) closeBtn.onclick = () => gallery.style.display = "none";
 
-// 4. Efeito 3D na foto principal (Suave)
-document.addEventListener("mousemove", (e) => {
+// 4. MOVIMENTO DA FOTO (Mouse e Giroscópio)
+function applyRotation(x, y) {
     if (!mainPhoto) return;
-    const x = (window.innerWidth / 2 - e.pageX) / 30;
-    const y = (window.innerHeight / 2 - e.pageY) / 30;
-    mainPhoto.style.transform = `perspective(1000px) rotateY(${x}deg) rotateX(${y}deg)`;
+    // Limita a rotação para 20 graus para não distorcer muito
+    const rotX = Math.max(Math.min(y, 20), -20);
+    const rotY = Math.max(Math.min(x, 20), -20);
+    mainPhoto.style.transform = `perspective(1000px) rotateY(${rotY}deg) rotateX(${-rotX}deg)`;
+}
+
+// Para PC (Mouse)
+document.addEventListener("mousemove", (e) => {
+    const x = (window.innerWidth / 2 - e.pageX) / 25;
+    const y = (window.innerHeight / 2 - e.pageY) / 25;
+    applyRotation(x, y);
+});
+
+// Para Celular (Giroscópio)
+window.addEventListener("deviceorientation", (event) => {
+    if (event.gamma !== null && event.beta !== null) {
+        // Gamma é inclinação lateral, Beta é frente/trás
+        applyRotation(event.gamma / 1.5, event.beta / 1.5);
+    }
 });
 
 // 5. Organização das Fotos da Galeria em Círculo
 const carouselImages = document.querySelectorAll(".carousel img");
 const totalImages = carouselImages.length;
-const radius = window.innerWidth < 600 ? 250 : 400; // Ajusta o raio do círculo para celular
 
-carouselImages.forEach((img, i) => {
-    const angle = i * (360 / totalImages);
-    img.style.transform = `rotateY(${angle}deg) translateZ(${radius}px)`;
-});
-
-// 6. Sistema de Estrelas e Corações (Otimizado para Resize)
-function setupCanvas(id) {
-    const canvas = document.getElementById(id);
-    const ctx = canvas.getContext("2d");
-    canvas.width = window.innerWidth;
-    canvas.height = window.innerHeight;
-    return { canvas, ctx };
+function positionCarousel() {
+    const radius = window.innerWidth < 600 ? 220 : 400; 
+    carouselImages.forEach((img, i) => {
+        const angle = i * (360 / totalImages);
+        img.style.transform = `rotateY(${angle}deg) translateZ(${radius}px)`;
+    });
 }
+positionCarousel();
+window.addEventListener("resize", positionCarousel);
 
-const { canvas: sCanvas, ctx: sCtx } = setupCanvas("stars");
-const { canvas: hCanvas, ctx: hCtx } = setupCanvas("hearts");
+// 6. Sistema de Animação (Estrelas e Corações)
+const sCanvas = document.getElementById("stars");
+const hCanvas = document.getElementById("hearts");
+const sCtx = sCanvas.getContext("2d");
+const hCtx = hCanvas.getContext("2d");
+
+function resizeCanvases() {
+    sCanvas.width = hCanvas.width = window.innerWidth;
+    sCanvas.height = hCanvas.height = window.innerHeight;
+}
+window.addEventListener("resize", resizeCanvases);
+resizeCanvases();
 
 let stars = Array.from({ length: 150 }, () => ({
     x: Math.random() * sCanvas.width,
@@ -97,7 +140,6 @@ let hearts = Array.from({ length: 30 }, () => ({
 }));
 
 function animate() {
-    // Estrelas
     sCtx.clearRect(0, 0, sCanvas.width, sCanvas.height);
     sCtx.fillStyle = "white";
     stars.forEach(s => {
@@ -106,7 +148,6 @@ function animate() {
         sCtx.fill();
     });
 
-    // Corações
     hCtx.clearRect(0, 0, hCanvas.width, hCanvas.height);
     hCtx.fillStyle = "#ff4da6";
     hearts.forEach(h => {
@@ -119,14 +160,7 @@ function animate() {
             h.x = Math.random() * hCanvas.width;
         }
     });
-
     requestAnimationFrame(animate);
 }
 animate();
-
-// Ajustar canvas se a tela mudar de tamanho
-window.onresize = () => {
-    sCanvas.width = hCanvas.width = window.innerWidth;
-    sCanvas.height = hCanvas.height = window.innerHeight;
-};
-  
+    
