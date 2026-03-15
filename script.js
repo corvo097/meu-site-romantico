@@ -1,73 +1,180 @@
-// Contador de tempo desde 1º de novembro de 2023
-function updateCounter() {
-    const startDate = new Date("2023-11-01T00:00:00");
-    const now = new Date();
-    const diff = now - startDate;
+const startDate=new Date("2023-11-01T00:00:00")
 
-    const days = Math.floor(diff / (1000 * 60 * 60 * 24));
-    const hours = Math.floor((diff / (1000 * 60 * 60)) % 24);
-    const minutes = Math.floor((diff / (1000 * 60)) % 60);
-    const seconds = Math.floor((diff / 1000) % 60);
+function updateCounter(){
 
-    document.getElementById("time-counter").innerText = `${days} dias, ${hours} horas, ${minutes} minutos e ${seconds} segundos juntos`;
+const now=new Date()
+
+const diff=now-startDate
+
+const days=Math.floor(diff/(1000*60*60*24))
+const hours=Math.floor((diff/(1000*60*60))%24)
+const minutes=Math.floor((diff/(1000*60))%60)
+const seconds=Math.floor((diff/1000)%60)
+
+document.getElementById("time-counter").innerText=
+`${days} dias ${hours}h ${minutes}m ${seconds}s juntos`
+
 }
 
-setInterval(updateCounter, 1000);
+updateCounter()
+setInterval(updateCounter,1000)
 
-// Frases rotativas
-const phrases = [
-    "Você é minha para sempre, e ninguém vai tirar você de mim.",
-    "Eu sou seu, e você é minha, para sempre.",
-    "Nada nem ninguém vai nos separar, minha.",
-    "Você é minha, só minha.",
-    "Só você me pertence, e eu sou seu, para todo o sempre."
-];
 
-let phraseIndex = 0;
-const phraseContainer = document.getElementById("floating-phrase");
 
-function rotatePhrases() {
-    phraseContainer.innerText = phrases[phraseIndex];
-    phraseIndex = (phraseIndex + 1) % phrases.length;
+const phrases=[
+
+"Você é meu lugar favorito.",
+"Nosso amor é infinito.",
+"Meu mundo começa em você.",
+"Para sempre nós.",
+"Meu coração sempre será seu."
+
+]
+
+let index=0
+const phraseContainer=document.getElementById("floating-phrase")
+
+function rotatePhrase(){
+
+phraseContainer.style.opacity=0
+
+setTimeout(()=>{
+
+phraseContainer.innerText=phrases[index]
+
+index=(index+1)%phrases.length
+
+phraseContainer.style.opacity=1
+
+},400)
+
 }
 
-setInterval(rotatePhrases, 5000); // Troca a cada 5 segundos
+rotatePhrase()
+setInterval(rotatePhrase,5000)
 
-// Mostrar e esconder a roleta
-const mainPhoto = document.querySelector(".photo-container img");
-const carouselContainer = document.getElementById("carousel-container");
-const closeCarousel = document.getElementById("close-carousel");
 
-mainPhoto.addEventListener("click", () => {
-    carouselContainer.style.display = "flex"; // Mostra a roleta
-});
 
-closeCarousel.addEventListener("click", () => {
-    carouselContainer.style.display = "none"; // Esconde a roleta
-});
+const gallery=document.getElementById("gallery")
+const mainPhoto=document.getElementById("mainPhoto")
+const closeGallery=document.getElementById("closeGallery")
 
-// Função de rotação da roleta com o toque
-let touchStartX = 0;
-const carouselImages = document.getElementById("carousel-images");
+mainPhoto.onclick=()=>gallery.style.display="flex"
+closeGallery.onclick=()=>gallery.style.display="none"
 
-carouselImages.addEventListener("touchstart", (e) => {
-    touchStartX = e.touches[0].clientX;
-});
 
-carouselImages.addEventListener("touchmove", (e) => {
-    const touchEndX = e.touches[0].clientX;
-    const deltaX = touchStartX - touchEndX;
-    carouselImages.style.transition = "transform 0.3s ease"; // Suavizar a rotação
-    carouselImages.style.transform = `translateX(${deltaX}px)`;
-});
 
-carouselImages.addEventListener("touchend", (e) => {
-    const touchEndX = e.changedTouches[0].clientX;
-    const deltaX = touchStartX - touchEndX;
-    if (Math.abs(deltaX) > 50) {
-        const direction = deltaX > 0 ? "left" : "right";
-        // Você pode adicionar a lógica de rotação com base na direção do deslizar
-    }
-    carouselImages.style.transition = "transform 0.3s ease";
-    carouselImages.style.transform = `translateX(0px)`;
-});
+document.addEventListener("mousemove",(e)=>{
+
+const x=(window.innerWidth/2-e.pageX)/40
+const y=(window.innerHeight/2-e.pageY)/40
+
+mainPhoto.style.transform=`rotateY(${x}deg) rotateX(${y}deg)`
+
+})
+
+
+
+const starCanvas=document.getElementById("stars")
+const starCtx=starCanvas.getContext("2d")
+
+starCanvas.width=window.innerWidth
+starCanvas.height=window.innerHeight
+
+let stars=[]
+
+for(let i=0;i<150;i++){
+
+stars.push({
+
+x:Math.random()*starCanvas.width,
+y:Math.random()*starCanvas.height,
+size:Math.random()*2
+
+})
+
+}
+
+function drawStars(){
+
+starCtx.clearRect(0,0,starCanvas.width,starCanvas.height)
+
+starCtx.fillStyle="white"
+
+stars.forEach(s=>{
+
+starCtx.beginPath()
+starCtx.arc(s.x,s.y,s.size,0,Math.PI*2)
+starCtx.fill()
+
+})
+
+requestAnimationFrame(drawStars)
+
+}
+
+drawStars()
+
+
+
+const heartCanvas=document.getElementById("hearts")
+const heartCtx=heartCanvas.getContext("2d")
+
+heartCanvas.width=window.innerWidth
+heartCanvas.height=window.innerHeight
+
+let hearts=[]
+
+for(let i=0;i<40;i++){
+
+hearts.push({
+
+x:Math.random()*heartCanvas.width,
+y:Math.random()*heartCanvas.height,
+size:Math.random()*4+2,
+speed:Math.random()*1+0.5
+
+})
+
+}
+
+function drawHearts(){
+
+heartCtx.clearRect(0,0,heartCanvas.width,heartCanvas.height)
+
+heartCtx.fillStyle="#ff4da6"
+
+hearts.forEach(h=>{
+
+heartCtx.beginPath()
+heartCtx.arc(h.x,h.y,h.size,0,Math.PI*2)
+heartCtx.fill()
+
+h.y-=h.speed
+
+if(h.y<0){
+
+h.y=heartCanvas.height
+h.x=Math.random()*heartCanvas.width
+
+}
+
+})
+
+requestAnimationFrame(drawHearts)
+
+}
+
+drawHearts()
+
+
+
+const carouselImages=document.querySelectorAll(".carousel img")
+
+carouselImages.forEach((img,i)=>{
+
+const angle=i*(360/carouselImages.length)
+
+img.style.transform=`rotateY(${angle}deg) translateZ(400px)`
+
+})
