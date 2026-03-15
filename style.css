@@ -1,172 +1,171 @@
-/* Estilo geral */
-body {
-    font-family: 'Arial', sans-serif;
-    margin: 0;
-    padding: 0;
-    background-color: #000000; /* Fundo preto */
-    color: #ff00ff; /* Rosa neon */
-    overflow-x: hidden;
+body{
+
+margin:0;
+font-family:'Poppins',sans-serif;
+background:black;
+color:white;
+text-align:center;
+overflow-x:hidden;
+
 }
 
-/* Container do título */
-.title-container {
-    text-align: center;
-    margin-top: 20px;
-    animation: fadeIn 1s ease-in-out;
+canvas{
+
+position:fixed;
+top:0;
+left:0;
+z-index:-1;
+
 }
 
-/* Título principal */
-.main-title {
-    font-size: 3rem;
-    font-weight: bold;
-    color: #ff00ff; /* Rosa neon */
-    text-shadow: 0 0 10px #ff00ff, 0 0 20px #ff00ff, 0 0 30px #ff00ff;
-    transition: transform 0.5s ease;
+#stars{
+
+z-index:-2;
+
 }
 
-.main-title:hover {
-    transform: scale(1.05);
+h1{
+
+font-family:'Dancing Script',cursive;
+font-size:3rem;
+color:#ff4da6;
+text-shadow:0 0 20px #ff4da6;
+
 }
 
-/* Subtítulo ajustado */
-.subtitle {
-    font-size: 1.5rem;
-    color: #ff00ff; /* Rosa neon */
-    margin-top: 10px;
-    font-style: italic;
-    text-shadow: 0 0 5px #ff00ff;
-    transition: opacity 0.3s ease;
+.photo-section img{
+
+width:90%;
+max-width:600px;
+
+border-radius:15px;
+
+box-shadow:0 0 30px #ff4da6;
+
+transition:transform 0.2s;
+
+transform-style:preserve-3d;
+
 }
 
-.subtitle:hover {
-    opacity: 0.8;
+.buttons{
+
+margin-top:30px;
+display:flex;
+justify-content:center;
+gap:20px;
+
 }
 
-/* Foto principal */
-.photo-container {
-    display: flex;
-    justify-content: center;
-    margin-top: 30px;
+.buttons a{
+
+background:#ff4da6;
+color:white;
+text-decoration:none;
+padding:12px 20px;
+border-radius:10px;
+
 }
 
-.photo {
-    width: 100%;
-    max-width: 600px;
-    border: 5px solid #ff00ff; /* Rosa neon */
-    border-radius: 10px;
-    box-shadow: 0 0 20px #ff00ff, 0 0 30px #ff00ff, 0 0 40px #ff00ff;
-    transition: transform 0.5s ease, box-shadow 0.5s ease;
+.counter{
+
+margin-top:40px;
+font-size:1.6rem;
+color:#ff4da6;
+
 }
 
-.photo:hover {
-    transform: scale(1.05);
-    box-shadow: 0 0 30px #ff00ff, 0 0 50px #ff00ff, 0 0 70px #ff00ff;
+.phrases{
+
+margin-top:30px;
+font-size:1.4rem;
+transition:opacity 0.5s;
+
 }
 
-/* Efeito da roleta */
-.carousel-container {
-    display: none;
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background-color: rgba(0, 0, 0, 0.95); /* Fundo quase preto */
-    justify-content: center;
-    align-items: center;
-    z-index: 1000;
+.timeline{
+
+margin-top:80px;
+
 }
 
-#close-carousel {
-    position: absolute;
-    top: 20px;
-    right: 20px;
-    color: #ff00ff; /* Rosa neon */
-    background-color: transparent;
-    border: 2px solid #ff00ff; /* Borda neon */
-    padding: 10px;
-    font-size: 1.2rem;
-    cursor: pointer;
-    border-radius: 5px;
-    text-shadow: 0 0 5px #ff00ff;
-    transition: background-color 0.3s ease, color 0.3s ease;
+.timeline-item{
+
+margin:30px auto;
+max-width:400px;
+padding:20px;
+border-left:3px solid #ff4da6;
+text-align:left;
+
 }
 
-#close-carousel:hover {
-    background-color: #ff00ff; /* Rosa neon */
-    color: #000000; /* Preto */
+.gallery{
+
+display:none;
+
+position:fixed;
+top:0;
+left:0;
+
+width:100%;
+height:100%;
+
+background:black;
+
+justify-content:center;
+align-items:center;
+flex-direction:column;
+
 }
 
-/* Estilo para as imagens da roleta */
-.carousel-images {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-wrap: nowrap;
-    overflow-x: scroll;
-    max-width: 90%;
+.carousel{
+
+position:relative;
+width:500px;
+height:500px;
+transform-style:preserve-3d;
+animation:rotateCarousel 40s linear infinite;
+
 }
 
-.carousel-images img {
-    width: 300px;
-    height: auto;
-    margin: 10px;
-    border-radius: 10px;
-    border: 3px solid #ff00ff; /* Borda rosa neon */
-    box-shadow: 0 0 10px #ff00ff, 0 0 20px #ff00ff;
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
+.carousel img{
+
+position:absolute;
+width:280px;
+height:auto;
+left:110px;
+top:120px;
+
+border-radius:12px;
+box-shadow:0 0 20px #ff4da6;
+
 }
 
-.carousel-images img:hover {
-    transform: scale(1.1);
-    box-shadow: 0 0 20px #ff00ff, 0 0 40px #ff00ff;
+@keyframes rotateCarousel{
+
+from{transform:rotateY(0deg)}
+to{transform:rotateY(360deg)}
+
 }
 
-/* Estilo para o contador de tempo */
-.counter {
-    text-align: center;
-    margin-top: 50px;
-    font-size: 1.8rem;
-    color: #ff00ff; /* Rosa neon */
-    text-shadow: 0 0 10px #ff00ff;
+#closeGallery{
+
+position:absolute;
+top:20px;
+right:20px;
+
+background:none;
+border:2px solid #ff4da6;
+color:#ff4da6;
+
+padding:8px 15px;
+cursor:pointer;
+
 }
 
-/* Botões do Instagram */
-.button-container {
-    display: flex;
-    justify-content: center;
-    gap: 20px; /* Espaçamento entre os botões */
-    margin-top: 30px;
-}
+footer{
 
-/* Estilo dos botões */
-.instagram-button {
-    text-decoration: none; /* Remove sublinhado */
-    font-size: 1.2rem;
-    font-weight: bold;
-    color: #000000; /* Texto preto */
-    background-color: #ff00ff; /* Fundo rosa neon */
-    border: 2px solid #ff00ff; /* Borda rosa neon */
-    padding: 10px 20px;
-    border-radius: 10px;
-    box-shadow: 0 0 10px #ff00ff, 0 0 20px #ff00ff, 0 0 30px #ff00ff;
-    transition: transform 0.3s ease, box-shadow 0.3s ease, background-color 0.3s ease;
-}
+margin-top:80px;
+color:#aaa;
 
-/* Efeito ao passar o mouse */
-.instagram-button:hover {
-    transform: scale(1.1); /* Aumenta o tamanho */
-    background-color: #000000; /* Muda o fundo para preto */
-    color: #ff00ff; /* Texto rosa neon */
-    box-shadow: 0 0 20px #ff00ff, 0 0 40px #ff00ff, 0 0 60px #ff00ff;
-}
-
-/* Animação de fade-in */
-@keyframes fadeIn {
-    from {
-        opacity: 0;
-    }
-    to {
-        opacity: 1;
-    }
 }
