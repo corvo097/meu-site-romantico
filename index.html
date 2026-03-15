@@ -1,52 +1,117 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
+
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Nosso Tempo Juntos</title>
-    <link rel="stylesheet" href="style.css">
-    <script src="script.js" defer></script>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Nosso Tempo Juntos</title>
+
+<link rel="stylesheet" href="style.css">
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;700&family=Dancing+Script:wght@600&display=swap" rel="stylesheet">
+
+<script src="script.js" defer></script>
+
 </head>
+
 <body>
-    <!-- Título e subtítulo -->
-    <div class="title-container">
-        <h1 class="main-title">Nosso Tempo Juntos</h1>
-        <p class="subtitle">Nada e nem ninguém pode entrar no nosso caminho</p>
-    </div>
 
-    <!-- Foto com borda brilhante -->
-    <div class="photo-container">
-        <img src="https://i.ibb.co/tsFvtPq/1730981895287.jpg" alt="Nossa Foto" class="photo">
-    </div>
+<canvas id="stars"></canvas>
+<canvas id="hearts"></canvas>
 
-    <!-- Botões para perfis -->
-    <div class="button-container">
-        <a href="https://www.instagram.com/joaocorvo_?igsh=MWl5NTZvNnZvY3lvdg==" target="_blank" class="instagram-button">Meu Perfil</a>
-        <a href="https://www.instagram.com/nataliaportoq/profilecard/?igsh=Z3kyZmpzeWJnczIw" target="_blank" class="instagram-button">Perfil dela</a>
-    </div>
+<header>
 
-    <!-- Roleta de Imagens -->
-    <div class="carousel-container" id="carousel-container">
-        <button id="close-carousel">Fechar</button>
-        <div class="carousel-images" id="carousel-images">
-            <img src="https://i.ibb.co/9VsSSCR/1730981895238.jpg" alt="Foto 1">
-            <img src="https://i.ibb.co/0KjGYTr/1730981895414.jpg" alt="Foto 2">
-            <img src="https://i.ibb.co/DpjgZtc/1730981895325.jpg" alt="Foto 3">
-            <img src="https://i.ibb.co/QP0ry7W/1730981895216.jpg" alt="Foto 4">
-            <img src="https://i.ibb.co/6Y4yw2h/1730981895165.jpg" alt="Foto 5">
-            <img src="https://i.ibb.co/RBLjSYG/1730981894976.jpg" alt="Foto 6">
-            <img src="https://i.ibb.co/W2XXL6Z/1730981894932.jpg" alt="Foto 7">
-            <img src="https://i.ibb.co/nB3gNns/1730981894890.jpg" alt="Foto 8">
-            <img src="https://i.ibb.co/JHXv5Ft/1730981895425.jpg" alt="Foto 9">
-            <img src="https://i.ibb.co/64RrLqN/1730981895449.jpg" alt="Foto 10">
-        </div>
-    </div>
+<h1>Nosso Tempo Juntos</h1>
+<p>Nada e nem ninguém pode entrar no nosso caminho</p>
 
-    <!-- Contador de tempo -->
-    <div class="counter" id="time-counter"></div>
+</header>
 
-    <!-- Frases rotativas -->
-    <div class="phrase-container" id="floating-phrase"></div>
+<main>
+
+<section class="photo-section">
+
+<img id="mainPhoto" src="https://i.ibb.co/tsFvtPq/1730981895287.jpg">
+
+</section>
+
+<section class="buttons">
+
+<a href="https://www.instagram.com/joaocorvo_?igsh=MWl5NTZvNnZvY3lvdg==" target="_blank">Meu Perfil</a>
+
+<a href="https://www.instagram.com/nataliaportoq/profilecard/?igsh=Z3kyZmpzeWJnczIw" target="_blank">Perfil dela</a>
+
+</section>
+
+<section class="counter">
+
+<div id="time-counter"></div>
+
+</section>
+
+<section class="phrases">
+
+<div id="floating-phrase"></div>
+
+</section>
+
+
+<section class="timeline">
+
+<h2>Nossa História</h2>
+
+<div class="timeline-item">
+<h3>01 Nov 2023</h3>
+<p>O começo de tudo.</p>
+</div>
+
+<div class="timeline-item">
+<h3>Primeiro encontro</h3>
+<p>O dia que tudo mudou.</p>
+</div>
+
+<div class="timeline-item">
+<h3>Hoje</h3>
+<p>Continuamos escrevendo nossa história.</p>
+</div>
+
+</section>
+
+</main>
+
+
+<div class="gallery" id="gallery">
+
+<button id="closeGallery">Fechar</button>
+
+<div class="carousel">
+
+<img src="https://i.ibb.co/9VsSSCR/1730981895238.jpg">
+<img src="https://i.ibb.co/0KjGYTr/1730981895414.jpg">
+<img src="https://i.ibb.co/DpjgZtc/1730981895325.jpg">
+<img src="https://i.ibb.co/QP0ry7W/1730981895216.jpg">
+<img src="https://i.ibb.co/6Y4yw2h/1730981895165.jpg">
+<img src="https://i.ibb.co/RBLjSYG/1730981894976.jpg">
+<img src="https://i.ibb.co/W2XXL6Z/1730981894932.jpg">
+<img src="https://i.ibb.co/nB3gNns/1730981894890.jpg">
+<img src="https://i.ibb.co/JHXv5Ft/1730981895425.jpg">
+<img src="https://i.ibb.co/64RrLqN/1730981895449.jpg">
+
+</div>
+
+</div>
+
+
+<audio autoplay loop>
+<source src="https://cdn.pixabay.com/audio/2023/02/13/audio_1e7bcd2a91.mp3">
+</audio>
+
+<footer>
+
+<p>Nosso tempo é infinito ❤️</p>
+
+</footer>
+
 </body>
 </html>
-
