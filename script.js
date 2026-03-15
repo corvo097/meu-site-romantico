@@ -48,7 +48,6 @@ const openBtn = document.getElementById("openGallery");
 const closeBtn = document.getElementById("closeGallery");
 const mainPhoto = document.getElementById("mainPhoto");
 
-// Função para ativar sensores no iPhone (iOS)
 async function requestSensorPermission() {
     if (typeof DeviceOrientationEvent !== 'undefined' && typeof DeviceOrientationEvent.requestPermission === 'function') {
         try {
@@ -62,7 +61,7 @@ async function requestSensorPermission() {
 if (openBtn) {
     openBtn.onclick = () => {
         gallery.style.display = "flex";
-        requestSensorPermission(); // Pede permissão ao interagir
+        requestSensorPermission();
     };
 }
 
@@ -75,27 +74,32 @@ if (mainPhoto) {
 
 if (closeBtn) closeBtn.onclick = () => gallery.style.display = "none";
 
-// 4. MOVIMENTO DA FOTO (Mouse e Giroscópio)
+// 4. MOVIMENTO DA FOTO (Suavizado e Centralizado)
 function applyRotation(x, y) {
     if (!mainPhoto) return;
-    // Limita a rotação para 20 graus para não distorcer muito
-    const rotX = Math.max(Math.min(y, 20), -20);
-    const rotY = Math.max(Math.min(x, 20), -20);
+
+    // maxDegree define o limite da inclinação (10 graus para ser sutil)
+    const maxDegree = 10; 
+    const rotX = Math.max(Math.min(y, maxDegree), -maxDegree);
+    const rotY = Math.max(Math.min(x, maxDegree), -maxDegree);
+
+    mainPhoto.style.transition = "transform 0.2s ease-out"; // Suaviza o movimento
     mainPhoto.style.transform = `perspective(1000px) rotateY(${rotY}deg) rotateX(${-rotX}deg)`;
 }
 
-// Para PC (Mouse)
+// Evento para Mouse (PC)
 document.addEventListener("mousemove", (e) => {
-    const x = (window.innerWidth / 2 - e.pageX) / 25;
-    const y = (window.innerHeight / 2 - e.pageY) / 25;
+    const x = (window.innerWidth / 2 - e.pageX) / 60; // Divisor alto para menos sensibilidade
+    const y = (window.innerHeight / 2 - e.pageY) / 60;
     applyRotation(x, y);
 });
 
-// Para Celular (Giroscópio)
+// Evento para Giroscópio (Celular)
 window.addEventListener("deviceorientation", (event) => {
     if (event.gamma !== null && event.beta !== null) {
-        // Gamma é inclinação lateral, Beta é frente/trás
-        applyRotation(event.gamma / 1.5, event.beta / 1.5);
+        // Gamma (lado a lado), Beta (frente e trás)
+        // Compensamos o Beta em -45 para o "centro" ser a inclinação natural da mão
+        applyRotation(event.gamma / 4, (event.beta - 45) / 4);
     }
 });
 
@@ -163,4 +167,3 @@ function animate() {
     requestAnimationFrame(animate);
 }
 animate();
-    
